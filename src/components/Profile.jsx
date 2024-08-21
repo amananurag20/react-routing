@@ -6,20 +6,20 @@ const Profile = () => {
   const [mousePosition, setMousePosition]= useState({x:0,y:0});
   useEffect(()=>{
     
-    const handleMove=(event)=>{
-      console.log(event);
+    const handleMove=(event)=>{      
       let currentX=event.clientX;
       let currenty=event.clientY;
       setMousePosition({x:currentX,y:currenty});
-      // console.log("mouseMoved")
+      
     }
 
     window.addEventListener("mousemove",handleMove);
 
     return ()=>{
+      
       window.removeEventListener("mousemove",handleMove)
     }
-  },[])
+  })
 
   return (
     <div className="flex justify-center items-center ">Profile
