@@ -10,7 +10,7 @@ const HomePage = () => {
    
   useEffect(()=>{
      const arr=data.map((car)=>{
-      return {...car,id:Math.random()}
+      return {...car,id:crypto.randomUUID()}
     });
     setNewData(arr);
   },[])
