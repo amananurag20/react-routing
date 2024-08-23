@@ -7,24 +7,26 @@ import Navbar from "./components/Navbar";
 import Error from "./components/Error";
 import Mobile from "./components/Mobile";
 import Admin from "./components/Admin";
+import userContext from "./contextApi/userContext";
+import { useState } from "react";
 
 const App = () => {
+  const [name, setName] = useState("aman");
   return (
     <div>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<Admin />} >
-             <Route path="/admin/signup" element={<Signup />} />
-             <Route path="/admin/profile" element={<Profile />} />
-          </Route>
-          <Route path="/mobile/:name/:lion" element={<Mobile/>}/>
-          <Route path="*" element={<Error/>} />
-          
-        </Routes>
-      </BrowserRouter>
+      <userContext.Provider value={{ name, setName }}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/mobile/:name/:lion" element={<Mobile />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </BrowserRouter>
+      </userContext.Provider>
     </div>
   );
 };
