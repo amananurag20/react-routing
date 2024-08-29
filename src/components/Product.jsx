@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const Product = () => {
@@ -8,20 +8,25 @@ const Product = () => {
     const [imageIndex, setImageIndex]= useState(0);
     
     const handleNext=()=>{
-
-        if(imageIndex===imageData.length-1){
-            return setImageIndex(0);
-        }
-        setImageIndex(imageIndex+1)
+        // if(imageIndex===imageData.length-1){
+        //     return setImageIndex(0);
+        // }
+        setImageIndex((prev)=>prev===imageData.length-1?0:prev+1); //setImageIndex((prev)=>prev+1)
     }
 
     const handlePrev=()=>{
-        if(imageIndex===0){
-            return setImageIndex(imageData.length-1);
-        }
-        setImageIndex(imageIndex-1)
+        
+        setImageIndex(setImageIndex((prev)=>prev===0?imageData.length-1:prev-1))
     }
 
+   useEffect(()=>{
+    setInterval(()=>{
+        console.log("SetTimeInterval")
+        handleNext()
+     },1000)
+   },[])
+  
+   console.log("re-render")
   return (
     <div className="flex justify-center pt-16">
         <img src="https://www.svgrepo.com/show/70596/left-arrow.svg" alt="arrow" className="w-60 cursor-pointer" onClick={handlePrev}/>
