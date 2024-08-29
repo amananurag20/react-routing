@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import userContext from "../contextApi/userContext";
+import colorContext from "../contextApi/colorContext";
 
 export const Login = () => {
   //mounting
@@ -17,8 +18,9 @@ export const Login = () => {
   const data = useContext(userContext);
   console.log("context data from login", data);
 
- const handleChange=(e)=>{
-  
+  const colorData= useContext(colorContext);
+
+ const handleChange=(e)=>{  
   data.setName(e.target.value)
  }
    
@@ -30,9 +32,10 @@ export const Login = () => {
         alt="login"
         width={"400px"}
       ></img>
+     
 
       <input type="text" placeholder="username" onChange={handleChange} className="bg-pink-300 text-3xl" value={data.name}/>
-
+    {colorData.color}
     </div>
   );
 };

@@ -26,6 +26,7 @@ const Profile = () => {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHvZ0pbf4bXvAJgVZVuRQqrNWnoWl96cV6wQ&s" alt="profile"/>
 
        <div className="text-4xl font-bold text-rose-400">{mousePosition.x}/{mousePosition.y}</div>
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7-xipRNRqMp8tG8XlUTzxt7bnSY-asyixqQ&s" alt="img"/>
     </div>
   )
 }
